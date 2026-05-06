@@ -6,23 +6,34 @@ const CustomCursor = () => {
   const [hovering, setHovering] = useState(false);
   const [clicking, setClicking] = useState(false);
   const [visible, setVisible] = useState(false);
+  // Start hidden; show only when a real mouse move is detected
+  const [usingMouse, setUsingMouse] = useState(false);
 
   const onMove = useCallback((e: MouseEvent) => {
     setPos({ x: e.clientX, y: e.clientY });
     setVisible(true);
+    setUsingMouse(true);
+  }, []);
+
+  // Hide cursor when user switches to touch
+  const onTouch = useCallback(() => {
+    setUsingMouse(false);
+    setVisible(false);
   }, []);
 
   useEffect(() => {
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchstart", onTouch, { passive: true });
     window.addEventListener("mousedown", () => setClicking(true));
     window.addEventListener("mouseup", () => setClicking(false));
     window.addEventListener("mouseleave", () => setVisible(false));
-    window.addEventListener("mouseenter", () => setVisible(true));
+    window.addEventListener("mouseenter", () => { if (usingMouse) setVisible(true); });
 
     return () => {
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("touchstart", onTouch);
     };
-  }, [onMove]);
+  }, [onMove, onTouch, usingMouse]);
 
   // Trail follows with delay
   useEffect(() => {
@@ -49,9 +60,8 @@ const CustomCursor = () => {
     return () => window.removeEventListener("mousemove", checkHover);
   }, []);
 
-  // Hide on touch devices
-  const isTouchDevice = typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
-  if (isTouchDevice) return null;
+  // Don't render at all until we know a mouse is being used
+  if (!usingMouse) return null;
 
   return (
     <>

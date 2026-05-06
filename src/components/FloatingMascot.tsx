@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const FloatingMascot = () => {
   const [pos, setPos] = useState({ x: -60, y: window.innerHeight / 2 });
+  const [usingMouse, setUsingMouse] = useState(false);
   const mouse = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const vel = useRef({ x: 0, y: 0 });
   const frame = useRef(0);
@@ -10,8 +11,16 @@ const FloatingMascot = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       mouse.current = { x: e.clientX, y: e.clientY };
+      setUsingMouse(true);
     };
+
+    // Hide mascot when user switches to touch input
+    const handleTouch = () => {
+      setUsingMouse(false);
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchstart", handleTouch, { passive: true });
 
     const moveInterval = setInterval(() => {
       frame.current += 1;
@@ -50,9 +59,13 @@ const FloatingMascot = () => {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchstart", handleTouch);
       clearInterval(moveInterval);
     };
   }, []);
+
+  // Don't render until we detect actual mouse usage
+  if (!usingMouse) return null;
 
   const speed = Math.sqrt(vel.current.x ** 2 + vel.current.y ** 2);
   const isMoving = speed > 0.3;
