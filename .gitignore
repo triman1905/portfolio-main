@@ -1,0 +1,74 @@
+# =========================
+# CLEAN_PORTFOLIO (Vite + React + TS + Supabase + Bun)
+# =========================
+
+# ---- Dependencies ----
+node_modules/
+
+# ---- Bun ----
+.bun/
+bun.lockb
+
+# ---- Build Output ----
+dist/
+build/
+
+# ---- Environment Variables ----
+.env
+.env.*
+!.env.example
+
+# ---- Logs ----
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun-debug.log*
+
+# ---- Editor / IDE ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- OS Files ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- TypeScript ----
+*.tsbuildinfo
+
+# ---- Testing ----
+coverage/
+.nyc_output/
+
+# ---- Vite Cache ----
+.vite/
+
+# ---- Supabase Local ----
+.supabase/
+supabase/.temp/
+supabase/.branches/
+
+# ---- Local Lovable / Generated ----
+.lovable/
+
+# ---- Temporary Files ----
+tmp/
+temp/
+*.tmp
+*.bak
+
+# ---- Package Locks (keep only one based on package manager) ----
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# If using Bun, keep bun.lock only
+# Remove above lock ignores if npm is your main package manager
+
+# ---- Misc ----
+*.zip
+*.rar
