@@ -31,6 +31,15 @@ const courseCerts = [
   { title: "Website Development With HTML", issuer: "TechShiva Institute", date: "Aug 2024", badge: "✅ Completed", image: "/certs/course_html_techshiva.jpg" },
 ];
 
+const anthropicCerts = [
+  { title: "Model Context Protocol: Advanced Topics", issuer: "Anthropic", date: "Mar 2026", badge: "✅ Completed", image: "/certs/cert_anthropic_mcp_advanced.jpg" },
+  { title: "Introduction to Model Context Protocol", issuer: "Anthropic", date: "Mar 2026", badge: "✅ Completed", image: "/certs/cert_anthropic_mcp_intro.jpg" },
+  { title: "AI Fluency: Framework & Foundations", issuer: "Anthropic", date: "Mar 2026", badge: "✅ Completed", image: "/certs/cert_anthropic_ai_fluency.jpg" },
+  { title: "Introduction to Claude Cowork", issuer: "Anthropic", date: "Mar 2026", badge: "✅ Completed", image: "/certs/cert_anthropic_cowork.jpg" },
+  { title: "Claude 101", issuer: "Anthropic", date: "Mar 2026", badge: "✅ Completed", image: "/certs/cert_anthropic_claude101.jpg" },
+  { title: "Claude Code in Action", issuer: "Anthropic", date: "Mar 2026", badge: "✅ Completed", image: "/certs/cert_anthropic_claude_code.jpg" },
+];
+
 const openSourceCerts = [
   { title: "GSSoC'24 Extended — Open Source Contributor", issuer: "GirlScript Foundation", date: "2024", badge: "🏅 Rank 521 · Score 850 · 9 PRs · 5 Badges", image: "/certs/opensource_gssoc.jpg" },
 ];
@@ -72,6 +81,7 @@ const timelineEvents = [
   { date: "Mar '25", label: "Data Bootcamp", color: "#7F77DD" },
   { date: "Aug '25", label: "TBO Intern",    color: "#378ADD" },
   { date: "Oct '25", label: "Oracle x2",     color: "#378ADD" },
+  { date: "Mar '26", label: "Anthropic x6",  color: "#CC785C" },
 ];
 
 const SYMBOLS = ["nabla","lambda","sigma","mu","sum","pi","beta","theta","alpha","epsilon","Delta","rho"];
@@ -349,7 +359,7 @@ const Certifications = () => {
           {/* Timeline */}
           <div className="relative z-10 border-t border-border px-6 py-5">
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
-              Journey · Jul 2024 → Oct 2025
+              Journey · Jul 2024 → Mar 2026
             </p>
             <Timeline />
           </div>
@@ -358,6 +368,7 @@ const Certifications = () => {
         {/* Cert Sections */}
         <Section icon={<Trophy className="w-5 h-5 text-neon" />}        title="Hackathons"                  certs={hackathonCerts}    onView={handleView} />
         <Section icon={<Award className="w-5 h-5 text-neon" />}         title="Professional Certifications"  certs={professionalCerts} onView={handleView} />
+        <Section icon={<Award className="w-5 h-5 text-neon" />}         title="Anthropic Certifications"     certs={anthropicCerts}    onView={handleView} />
         <Section icon={<GraduationCap className="w-5 h-5 text-neon" />} title="Course Completions"           certs={courseCerts}       onView={handleView} />
         <Section icon={<Github className="w-5 h-5 text-neon" />}        title="Open Source"                  certs={openSourceCerts}   onView={handleView} />
         <Section icon={<Briefcase className="w-5 h-5 text-neon" />}     title="Internships"                  certs={internshipCerts}   onView={handleView} />
