@@ -14,7 +14,18 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    company: "TBO (Travel Boutique Online)",
+    company: "EY (Ernst & Young)",
+    role: "AI Solutions Intern",
+    date: "June 2026 – Sept 2026",
+    link: "https://www.ey.com/",
+    bullets: [
+      "Selected for EY's AI Solutions Internship Program to contribute to enterprise AI initiatives and digital transformation projects.",
+      "Collaborating with industry professionals to develop data-driven solutions and explore Generative AI applications.",
+      "Supporting innovation through advanced analytics and emerging AI technologies.",
+    ],
+  },
+  {
+    company: "TBO TECH LIMITED",
     role: "Data Science Intern",
     date: "June 2025 – Aug 2025",
     link: "https://www.tbo.com/",
